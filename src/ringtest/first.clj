@@ -6,7 +6,6 @@
 
 (defroutes app-routes
   (GET "/" [] "Hello World!")
-  (ANY "/x" []  "OK")
   (route/resources "/")
   (route/not-found "Not Found"))
 
@@ -15,4 +14,8 @@
 
 (comment
   (start! #'app)
-  (stop!))
+  (stop!)
+
+
+  (start! (ringtest.stack/ring-stack #'app))
+  )

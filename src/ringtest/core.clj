@@ -33,6 +33,10 @@
 (defn handler-resource [req]
   (response/resource-response "hello.txt"))
 
+
+
+;; ----------------------------------------
+
 (defn handler-reload1 [req]
   (response/response (reload-me/some-work)))
 

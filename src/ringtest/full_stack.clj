@@ -12,10 +12,7 @@
 
 
 (defn first-app [req]
-  (home req)
-  )
-
-
+  (home req))
 
 
 (def handler (-> #'first-app
