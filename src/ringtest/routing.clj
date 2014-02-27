@@ -3,7 +3,7 @@
             [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.util.response :as response]
-            [ringtest.stack :as server]))
+            [ringtest.stack :refer [start! stop!]]))
 
 
 (defn home []
@@ -87,7 +87,6 @@
 
 
 (defn foobar-routes [foobar-type]
-  (println "FOOBAR" foobar-type)
   (compojure/routes
       (compojure/GET "/" [] (str foobar-type " Page"))
       (compojure/GET "/:id" [id] (str foobar-type "#" id))))
@@ -119,8 +118,8 @@
 
 
 (comment
-  (server/start #'handler)
-  (server/stop)
+  (start! #'handler)
+  (stop!)
 )
 
 

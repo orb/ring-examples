@@ -3,17 +3,17 @@
             [ring.util.response :as response]
             [ringtest.reload-me :as reload-me]
             [clojure.java.io :as io]
-            [ringtest.stack :as server]))
+            [ringtest.stack :refer [start! stop!]]))
 
 
 (defn handler-nil [req]
-  nil)
+  {:body nil})
 
 (defn handler-text [req]
   {:body "hello world"})
 
 (defn handler-file [req]
-  {:body (io/file "project.clj")})
+  {:body (io/file "/etc/passwd")})
 
 (defn handler-status [req]
   {:status 402
@@ -82,8 +82,8 @@
 
 
 (comment
-  (server/start #'handler)
-  (server/stop)
+  (start!) #'handler
+  (stop!)
 )
 
 
